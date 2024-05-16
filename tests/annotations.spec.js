@@ -57,3 +57,15 @@ test.fixme('this test is marked to be fixed, it wont be executed', async({page})
   // Incomplete command
   await page.getByRole().click();
 });
+
+test('example test', async ({ page, browser }) => {
+  test.info().annotations.push({
+    type: 'browser version',
+    description: browser.version(),
+  });
+
+  await page.goto('https://www.google.com.br/');
+
+  // Expect a title to be equal to.
+  await expect(page).toHaveTitle('Google');
+});

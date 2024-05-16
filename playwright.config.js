@@ -31,7 +31,6 @@ module.exports = defineConfig({
     permissions: ['notifications'],
     launchOptions: {
       slowMo: 2000,
-      args: ['--start maximized'],
     },
     actionTimeout: 15000,
     trace: 'on-first-retry',
@@ -42,28 +41,32 @@ module.exports = defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    //Setup project
-    { name: 'setup', testMatch: /.*\.setup\.js/ },
+    // //Setup project
+    // { name: 'setup', testMatch: /.*\.setup\.js/ },
 
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-
-    {
-      name: 'firefox',
+      name: 'chromium - DEV',
       use: { 
-        ...devices['Desktop Firefox'],
-        // Use prepared auth state.
-        // storageState: 'playwright/.auth/user.json',
+        ...devices['Desktop Chrome'],
+        baseURL: 'https://dev-tasy.whebdc.com.br/'
       },
-      // dependencies: ['setup'],
     },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { 
+    //     ...devices['Desktop Firefox'],
+    //     baseURL: 'https://dev-tasy.whebdc.com.br/#/login',
+    //     // Use prepared auth state.
+    //     storageState: 'playwright/.auth/user.json',
+    //   },
+    //   dependencies: ['setup'],
+    // },
+
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {
